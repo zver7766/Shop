@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using GoshaDudar.Data.Models;
 using Microsoft.EntityFrameworkCore;
+using Shop.Data.Models;
 
 namespace GoshaDudar.Data
 {
@@ -15,8 +16,9 @@ namespace GoshaDudar.Data
 
         public DbSet<Car> Car { get; set; }
         public DbSet<Category> Category { get; set; }
-
         public DbSet<ShopCarItem> ShopCarItem { get; set; }
-
+        public DbSet<Order> Order { get; set; }
+        public DbSet<OrderDetail> OrderDetail { get; set; }
+ 
     }
 }

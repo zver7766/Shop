@@ -32,9 +32,9 @@ namespace GoshaDudar.Controllers
             return View(obj);
         }
 
-        public RedirectToActionResult AddToCart(int Id)
+        public RedirectToActionResult AddToCart(int id)
         {
-            var item = _carRep.GetAllCars.FirstOrDefault(i => i.Id == Id);
+            var item = _carRep.GetAllCars.FirstOrDefault(i => i.Id == id);
             if (item != null)
             {
                 _shopCart.AddToCart(item);

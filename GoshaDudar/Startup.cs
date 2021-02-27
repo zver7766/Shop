@@ -14,6 +14,8 @@ using GoshaDudar.Data.Repository;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Shop.Data.Interfaces;
+using Shop.Data.Repository;
 
 namespace GoshaDudar
 {
@@ -33,6 +35,7 @@ namespace GoshaDudar
             services.AddDbContext<AppDBContent>(options => options.UseSqlServer(_confString.GetConnectionString("DefaultConnection")));
             services.AddTransient<IAllCars, CarRepository>();
             services.AddTransient<ICarsCategory, CategoryRepository>();
+            services.AddTransient<IAllOrders, OrdersRepository>();
             // services.AddRazorPages();
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();

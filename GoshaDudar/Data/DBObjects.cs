@@ -10,7 +10,7 @@ namespace GoshaDudar.Data
 {
     public class DBObjects
     {
-        public async static void Initial(AppDBContent content)
+        public static async void Initial(AppDBContent content)
         {
             
 

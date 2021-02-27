@@ -32,7 +32,7 @@ namespace GoshaDudar.Data.Models
             return new ShopCart(context) { ShopCartId = shopCartId };
         }
 
-        public async void AddToCart(Car car)
+        public  void AddToCart(Car car)
         {
             appDbContent.ShopCarItem.Add(new ShopCarItem
             {
@@ -41,7 +41,7 @@ namespace GoshaDudar.Data.Models
                 price = car.Price
             });
 
-           await appDbContent.SaveChangesAsync();
+            appDbContent.SaveChanges();
         }
 
         public List<ShopCarItem> GetShopItems() => appDbContent.ShopCarItem.Where(c => c.ShopCartId == ShopCartId).Include(s => s.car).ToList();
