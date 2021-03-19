@@ -25,6 +25,7 @@ namespace GoshaDudar.Controllers
         {
             var items = _shopCart.GetShopItems();
             _shopCart.ListShopItems = items;
+            
             var obj = new ShopCartViewModel
             {
                 ShopCart = _shopCart
@@ -32,6 +33,15 @@ namespace GoshaDudar.Controllers
             return View(obj);
         }
 
+        public RedirectToActionResult RemoveFromCart(int id)
+        {
+            var item = _carRep.GetAllCars.FirstOrDefault(i => i.Id == id);
+            if (item != null)
+            {
+                _shopCart.RemoveFromCart(item);
+            }
+            return RedirectToAction("Index");
+        }
         public RedirectToActionResult AddToCart(int id)
         {
             var item = _carRep.GetAllCars.FirstOrDefault(i => i.Id == id);

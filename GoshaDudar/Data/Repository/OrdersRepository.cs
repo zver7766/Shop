@@ -19,10 +19,11 @@ namespace Shop.Data.Repository
             this.appDbContent = appDbContent;
             this.shopCart = shopCart;
         }
-        public async void CreateOrder(Order order)
+        public  void CreateOrder(Order order)
         {
             order.OrderTime = DateTime.Now;
             appDbContent.Order.Add(order);
+            appDbContent.SaveChanges();
 
             var items = shopCart.ListShopItems;
 
@@ -35,9 +36,9 @@ namespace Shop.Data.Repository
                     Price = el.car.Price
                 };
                 appDbContent.OrderDetail.Add(orderDetail);
-            }
-
-            await appDbContent.SaveChangesAsync();
+            } 
+            
+            appDbContent.SaveChanges();
         }
     }
 }

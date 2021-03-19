@@ -32,15 +32,34 @@ namespace GoshaDudar.Data.Models
             return new ShopCart(context) { ShopCartId = shopCartId };
         }
 
+        private static int id;
         public  void AddToCart(Car car)
         {
-            appDbContent.ShopCarItem.Add(new ShopCarItem
+            ShopCarItem item = new ShopCarItem
             {
+                ShopCartId = this.ShopCartId,
+                car = car,
+                price = car.Price
+            };
+            appDbContent.ShopCarItem.Add(item);
+
+            appDbContent.SaveChanges();
+             id = item.Id;
+        }
+
+        public void RemoveFromCart(Car car)
+        {
+           
+            ShopCarItem item = new ShopCarItem
+            {
+                Id = id,
                 ShopCartId = ShopCartId,
                 car = car,
                 price = car.Price
-            });
-
+            };
+           
+            //appDbContent.ShopCarItem.Find(item);
+            appDbContent.ShopCarItem.Remove(item);
             appDbContent.SaveChanges();
         }
 
